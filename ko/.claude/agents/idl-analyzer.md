@@ -164,9 +164,9 @@ plot_spectrum.pro
 
 ---
 
-## 08-Parity 확장 — probe 계획 · 데이터 요구 명세 · policy 초안
+## Parity — probe 계획 · 데이터 요구 명세 · policy 초안
 
-이 하네스(08)에서는 분석 산출물에 아래 3개가 추가된다. 모두 G1 사용자 승인 대상이다.
+이 하네스에서는 분석 산출물에 아래 3개가 포함된다. 모두 G1 사용자 승인 대상이다.
 규약의 근거는 `parity-protocol` 스킬 — **probe 설계 전에 반드시 읽는다.**
 
 ### `analysis/04_probe_plan.md` — 체크포인트 계획

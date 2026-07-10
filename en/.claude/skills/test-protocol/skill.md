@@ -11,10 +11,10 @@ description: >
 
 # Test-Protocol — IDL→Python Conversion Test Methodology
 
-> **[08-Parity harness note]** In this harness, **the authority that decides equivalence is not this
+> **[Parity harness note]** In this harness, **the authority that decides equivalence is not this
 > document but the `parity-protocol` skill + `tools/compare_probes.py` (comparison against the oracle run).**
 > Every "expected value" in the methodology below is replaced by an oracle probe (.sav) (see the
-> 08 extension section of the test-engineer agent); this document applies only to the Phase 6 regression tests (pytest setup, parallel execution, edge cases).
+> Parity section of the test-engineer agent); this document applies only to the Phase 6 regression tests (pytest setup, parallel execution, edge cases).
 > For numerical tolerance thresholds as well, `{work_path}/policy.yaml` takes precedence.
 
 ## Overview

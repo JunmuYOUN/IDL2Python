@@ -1,20 +1,19 @@
-# 08-IDL2Python-Parity — 실행 기반 IDL→Python 변환·검증 하네스
+# IDL2Python-Parity — 실행 기반 IDL→Python 변환·검증 하네스
 
 IDL(`.pro`) 파일을 Python으로 변환하고, **원본 IDL과 변환된 Python을 실제 환경에서 실행하여
 체크포인트 단위로 수치를 대조(parity check)**하고, 불일치가 사라질 때까지 수정 루프를 도는 파이프라인.
 
-07-idl2python(구문 변환 + 자체 테스트)의 확장판이다.
-07과의 결정적 차이: **기대값을 추정하지 않는다. 기대값은 항상 원본 IDL을 실제로 실행해 얻은 산출물(오라클)이다.**
+핵심 원칙: **기대값을 추정하지 않는다. 기대값은 항상 원본 IDL을 실제로 실행해 얻은 산출물(오라클)이다.**
 
-## 07 대비 무엇이 다른가
+## 핵심 설계
 
-| 항목 | 07 (구문 변환) | 08 (실행 검증) |
-|---|---|---|
-| 정답 기준 | 에이전트가 추정한 기대값 / 물리적 타당성 | **원본 IDL 실제 실행 산출물 (오라클)** |
-| 검증 단위 | 최종 출력 위주 | **체크포인트(probe) 단위 중간값 전부** |
-| 불일치 시 | REVISE 피드백 (정적 리뷰) | **최초 발산 지점(first divergence)으로 버그 위치 자동 국소화 → 수정 → Python만 재실행** |
-| 데이터 | 합성 우선 | 실데이터 3루트 (사용자 제공 / 요청 / 자동 다운로드) + 합성 |
-| 좌표/수치 규약 | 매핑 표 | **policy.yaml로 명시적 선언 + 비교기가 기계적으로 집행** |
+| 항목 | 방식 |
+|---|---|
+| 정답 기준 | **원본 IDL 실제 실행 산출물 (오라클)** |
+| 검증 단위 | **체크포인트(probe) 단위 중간값 전부** |
+| 불일치 시 | **최초 발산 지점(first divergence)으로 버그 위치 자동 국소화 → 수정 → Python만 재실행** |
+| 데이터 | 실데이터 3루트 (사용자 제공 / 요청 / 자동 다운로드) + 합성 |
+| 좌표/수치 규약 | **policy.yaml로 명시적 선언 + 비교기가 기계적으로 집행** |
 
 ## 에이전트 팀 구성표
 
@@ -196,9 +195,9 @@ Phase 8  최종 보고 — parity certificate (환경 provenance + 입력 manife
 | **idl2python-orchestrator** | 파이프라인 총괄 (phase 순서, 게이트, 루프, 병렬) |
 | **parity-protocol** | probe 규약, policy.yaml 스키마, 좌표·수치 함정 카탈로그, 발산 시그니처 진단표, 캐시 규칙 |
 | **data-acquisition** | 3루트 데이터 확보 결정 트리, fetch_data.py 사용법, manifest 규칙 |
-| **idl-python-mapping** | IDL↔Python 구문 매핑 레퍼런스 (07 이관) |
-| **test-protocol** | pytest 방법론 (07 이관 — 기대값은 오라클 probe로 대체) |
-| **web-source-collector** | 웹 URL에서 .pro 수집 (07 이관) |
+| **idl-python-mapping** | IDL↔Python 구문 매핑 레퍼런스 |
+| **test-protocol** | pytest 방법론 (기대값은 오라클 probe로 대체) |
+| **web-source-collector** | 웹 URL에서 .pro 수집 |
 
 ## 도구 (tools/) — 결정론적 스크립트
 

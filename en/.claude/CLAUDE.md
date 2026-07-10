@@ -1,19 +1,18 @@
-# 08-IDL2Python-Parity — Execution-based IDL→Python conversion & verification harness
+# IDL2Python-Parity — Execution-based IDL→Python conversion & verification harness
 
 A pipeline that converts IDL (`.pro`) files to Python, **runs the original IDL and the converted Python in a real environment and compares numerical values checkpoint by checkpoint (parity check)**, and iterates a fix loop until the mismatches are gone.
 
-It is an extended version of 07-idl2python (syntax conversion + self-test).
-The decisive difference from 07: **it does not estimate expected values. The expected value is always the output (the oracle) obtained by actually running the original IDL.**
+Core principle: **it does not estimate expected values. The expected value is always the output (the oracle) obtained by actually running the original IDL.**
 
-## What's different from 07
+## Core design
 
-| Item | 07 (syntax conversion) | 08 (execution verification) |
-|---|---|---|
-| Ground-truth basis | Expected values estimated by the agent / physical plausibility | **Actual execution output of the original IDL (oracle)** |
-| Verification unit | Mostly the final output | **All intermediate values at checkpoint (probe) granularity** |
-| On mismatch | REVISE feedback (static review) | **Auto-localize the bug to the first divergence point → fix → re-run Python only** |
-| Data | Synthetic first | Real data via 3 routes (user-provided / requested / auto-download) + synthetic |
-| Coordinate/numeric conventions | Mapping table | **Explicit declaration in policy.yaml + mechanically enforced by the comparator** |
+| Item | Approach |
+|---|---|
+| Ground-truth basis | **Actual execution output of the original IDL (oracle)** |
+| Verification unit | **All intermediate values at checkpoint (probe) granularity** |
+| On mismatch | **Auto-localize the bug to the first divergence point → fix → re-run Python only** |
+| Data | Real data via 3 routes (user-provided / requested / auto-download) + synthetic |
+| Coordinate/numeric conventions | **Explicit declaration in policy.yaml + mechanically enforced by the comparator** |
 
 ## Agent team roster
 
@@ -188,9 +187,9 @@ This harness **assumes GitHub distribution**. It is not tied to a specific serve
 | **idl2python-orchestrator** | Pipeline coordination (phase order, gates, loops, parallelism) |
 | **parity-protocol** | probe conventions, policy.yaml schema, coordinate & numeric pitfall catalog, divergence-signature diagnostic table, cache rules |
 | **data-acquisition** | 3-route data acquisition decision tree, fetch_data.py usage, manifest rules |
-| **idl-python-mapping** | IDL↔Python syntax mapping reference (ported from 07) |
-| **test-protocol** | pytest methodology (ported from 07 — expected values replaced by oracle probes) |
-| **web-source-collector** | Collect .pro from web URLs (ported from 07) |
+| **idl-python-mapping** | IDL↔Python syntax mapping reference |
+| **test-protocol** | pytest methodology (expected values replaced by oracle probes) |
+| **web-source-collector** | Collect .pro from web URLs |
 
 ## Tools (tools/) — deterministic scripts
 

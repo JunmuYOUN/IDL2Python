@@ -12,7 +12,7 @@ Subcommands
           never hardcode an address in code or config)
   url   — direct HTTP(S) download
 
-Examples (run on the server, conda env torchV2):
+Examples (run in your configured conda env):
   python fetch_data.py vso  --time 2017-01-01T00:00:00 --window 60 \
       --instrument aia --wavelength 193 --out {work}/data
   python fetch_data.py jsoc --series hmi.M_720s --time 2017-01-01T00:00:00/1m \

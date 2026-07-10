@@ -14,7 +14,7 @@ description: >
 ## Overview
 
 When the user presents an IDL .pro, this coordinates the whole process: analysis → data acquisition → **IDL oracle execution** → conversion → **parity loop (run · compare · fix)** → regression pinning → review.
-Unlike the 07 harness, completion is judged not by "tests pass" but by **"passing comparison against the original IDL's execution output (parity PASS)"**.
+Completion is judged not by "tests pass" but by **"passing comparison against the original IDL's execution output (parity PASS)"**.
 
 ## Required-Input Check
 
@@ -26,7 +26,7 @@ Unlike the 07 harness, completion is judged not by "tests pass" but by **"passin
 | 4 | **Validation-data method** | "How should we obtain the validation inputs? ① provide them directly ② I compile the required spec and request it ③ automatic download (after approval) ④ search for existing data on the server" |
 | 5 | **Oracle scope** | "Scope of the IDL execution comparison: based on one run of the whole program, or per specific function/subroutine?" |
 
-Automatic source-type detection (local/Git/web) and Phase 0 collection are the same as 07 (`web-source-collector`).
+Automatic source-type detection (local/Git/web) and Phase 0 collection follow the `web-source-collector` skill.
 
 ## Pipeline
 
@@ -34,7 +34,7 @@ Automatic source-type detection (local/Git/web) and Phase 0 collection are the s
 Phase 0  Source collection → inbox/
     ▼
 Phase 1  Analysis (idl-analyzer)
-         ├ 00~03: inventory/dependencies/syntax/conversion plan (same as 07)
+         ├ 00~03: inventory/dependencies/syntax/conversion plan
          ├ 04_probe_plan.md: checkpoint plan (location · variable · rationale, 8-15 items)
          ├ 05_data_requirements.md: validation-data requirement spec
          └ policy.yaml draft (based on config/policy.template.yaml)
@@ -75,7 +75,7 @@ Phase 7  Quality review (conversion-reviewer)
 Phase 8  Final report — reports/09_parity_certificate.md
 ```
 
-**Multi-file (batch) mode**: convert dependency groups in parallel just as in 07, but set the oracle **per entry point of the call graph** (rather than running IDL separately for each file, embed the probes of multiple files together in a single run of the entry point).
+**Multi-file (batch) mode**: convert dependency groups in parallel, but set the oracle **per entry point of the call graph** (rather than running IDL separately for each file, embed the probes of multiple files together in a single run of the entry point).
 
 ## Approval Gates
 
@@ -124,7 +124,7 @@ Do not declare PASS with arbitrary values before finalization.
 | 5 | Limit exceeded | the table above |
 | 6 | pytest not installed | ask the user to approve installation (`pip install pytest`); if refused, substitute a plain assert runner |
 
-## conversion-note.md Logging Rules (same as 07 + additions)
+## conversion-note.md Logging Rules
 
 - Each agent appends to its own Phase section (no editing).
 - **Additional logging obligation**: oracle cache key, per-round divergence→fix summary, waiver approval history, environment snapshot.

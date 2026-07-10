@@ -94,7 +94,7 @@ checkpoints:                # per-probe/per-variable override
 waivers:                    # approved mismatches (user approval required)
   - checkpoint: "07_rot"
     var: img_rot
-    reason: "IDL cubic=-0.5 vs scipy spline kernel difference — user approval 2026-07-09"
+    reason: "IDL cubic=-0.5 vs scipy spline kernel difference — user approval 2025-06-01"
     relaxed: {metric: allclose, rtol: 1.0e-3, atol: 1.0e-4}
 ```
 
@@ -231,7 +231,7 @@ compare_probes.py attempts automatic diagnosis on failing arrays. Use this table
 ## 6. Running the comparator
 
 ```bash
-# On the server, in the torchV2 environment
+# In the `idl2py` environment
 python tools/compare_probes.py \
     --oracle {workpath}/probes/idl \
     --py     {workpath}/probes/py/run_01 \

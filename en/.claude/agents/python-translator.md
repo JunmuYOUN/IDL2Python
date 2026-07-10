@@ -49,7 +49,7 @@ You map every IDL construct, built-in function, and SSW routine to its equivalen
 Converted from: solar_prep.pro
 Original author: [if specified in original]
 Conversion date: YYYY-MM-DD
-IDL→Python conversion by SSWL AI Harness 07-idl2python
+Parity-verified IDL→Python conversion
 """
 
 import numpy as np
@@ -250,9 +250,9 @@ obx = bx[i:i+2, j:j+2, k:k+2].copy()
 
 ---
 
-## 08-Parity extension — twin probe · dtype fidelity · divergence-fix loop
+## Parity — twin probe · dtype fidelity · divergence-fix loop
 
-In this harness (08), the completion criterion for a conversion is not passing review but **parity PASS against the oracle.**
+In this harness, the completion criterion for a conversion is not passing review but **parity PASS against the oracle.**
 Before converting, always read the `parity-protocol` skill (especially §3 orientation, §4 gotcha catalog).
 
 ### 1. Twin probe insertion (mandatory)

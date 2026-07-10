@@ -56,7 +56,7 @@ Recommended number of sets: 2 or more (different dates; if possible, a day with 
 
 ## 3. fetch_data.py usage (route C)
 
-Run in the server's torchV2 environment:
+Run in the `idl2py` environment:
 
 ```bash
 # VSO (no authentication needed)

@@ -11,10 +11,10 @@ description: >
 
 # Test-Protocol — IDL→Python 변환 테스트 방법론
 
-> **[08-Parity 하네스 주의]** 이 하네스에서 동등성의 **판정 주체는 이 문서가 아니라
+> **[Parity 하네스 주의]** 이 하네스에서 동등성의 **판정 주체는 이 문서가 아니라
 > `parity-protocol` 스킬 + `tools/compare_probes.py`(오라클 실행 대조)다.**
 > 아래 방법론의 "기대값"은 모두 오라클 probe(.sav)로 대체되며 (test-engineer 에이전트의
-> 08 확장 절 참조), 이 문서는 Phase 6 회귀 테스트(pytest 구성·병렬 실행·엣지 케이스)에만 적용한다.
+> Parity 절 참조), 이 문서는 Phase 6 회귀 테스트(pytest 구성·병렬 실행·엣지 케이스)에만 적용한다.
 > 수치 허용 오차의 기준값도 `{작업경로}/policy.yaml`이 우선한다.
 
 ## 개요

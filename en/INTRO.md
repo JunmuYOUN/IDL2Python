@@ -27,7 +27,7 @@ Validation data: [provide-directly path | request spec | auto-download | search 
 
 ---
 
-### 🔬 What is different (vs 07)
+### 🔬 Key characteristics
 
 - It does not estimate expected values — it compares against values produced by **actually running IDL**.
 - It compares not only the final output but **all intermediate checkpoints**, so when a mismatch occurs it automatically points out

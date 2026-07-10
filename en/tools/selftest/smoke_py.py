@@ -1,4 +1,4 @@
-"""Smoke test: python twin probes + comparator (run on server, torchV2)."""
+"""Smoke test: python twin probes + comparator (run in your configured conda env)."""
 import os
 import sys
 

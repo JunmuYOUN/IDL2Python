@@ -292,9 +292,9 @@ assert_array_equal(python_int_result, expected_int)
 
 ---
 
-## 08-Parity 확장 — 기대값은 추정하지 않는다 (oracle-pinned 회귀 테스트)
+## Parity — 기대값은 추정하지 않는다 (oracle-pinned 회귀 테스트)
 
-이 하네스(08)에서 위 본문의 "IDL 출력 기대값"은 **오라클 probe(.sav)로 대체**된다.
+이 하네스에서 위 본문의 "IDL 출력 기대값"은 **오라클 probe(.sav)로 대체**된다.
 기대값을 손으로 만들거나 추정하지 않는다. 판정의 주체는 Phase 5의 compare_probes.py이며,
 test-engineer의 역할은 **parity PASS 이후를 지키는 회귀 게이트**를 만드는 것이다 (Phase 6).
 
@@ -325,5 +325,4 @@ def test_probe_parity(pid, staged_inputs, policy):
 
 - 실행 환경에 pytest가 없으면 설치 승인을 사용자에게 요청하고,
   거부되면 plain assert 러너 `tests/run_all.py`로 동일 검증을 수행한다.
-  (remote-99 프로파일: torchV2에 설치 완료, 2026-07-09 사용자 승인)
 - 테스트 실행도 `config/env.yaml`의 exec.mode를 따른다 (ssh 모드면 원격 실행).

@@ -164,9 +164,9 @@ When analyzing, always verify the following items:
 
 ---
 
-## 08-Parity Extension — probe plan · data requirements spec · policy draft
+## Parity — probe plan · data requirements spec · policy draft
 
-In this harness (08), the following 3 items are added to the analysis outputs. All are subject to G1 user approval.
+In this harness, the analysis outputs include the following 3 items. All are subject to G1 user approval.
 The basis for this convention is the `parity-protocol` skill — **be sure to read it before designing probes.**
 
 ### `analysis/04_probe_plan.md` — checkpoint plan

@@ -292,9 +292,9 @@ Run the entire pipeline with synthetic data and check physical plausibility.
 
 ---
 
-## 08-Parity extension — expected values are not estimated (oracle-pinned regression tests)
+## Parity — expected values are not estimated (oracle-pinned regression tests)
 
-In this harness (08), the "expected IDL output" in the body above is **replaced by an oracle probe (.sav).**
+In this harness, the "expected IDL output" in the body above is **replaced by an oracle probe (.sav).**
 Do not hand-craft or estimate expected values. The arbiter of the verdict is compare_probes.py in Phase 5,
 and test-engineer's role is to build the **regression gate that guards everything after parity PASS** (Phase 6).
 
@@ -325,5 +325,4 @@ def test_probe_parity(pid, staged_inputs, policy):
 
 - If pytest is not in the execution environment, ask the user to approve installing it;
   if declined, perform the same verification with the plain-assert runner `tests/run_all.py`.
-  (remote-99 profile: installed in torchV2, user-approved 2026-07-09)
 - Test execution also follows exec.mode in `config/env.yaml` (if ssh mode, run remotely).

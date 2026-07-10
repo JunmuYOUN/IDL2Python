@@ -49,7 +49,7 @@ IDL의 모든 구문, 내장 함수, SSW 루틴을 Python 생태계의 등가물
 Converted from: solar_prep.pro
 Original author: [원본에 명시된 경우]
 Conversion date: YYYY-MM-DD
-IDL→Python conversion by SSWL AI Harness 07-idl2python
+Parity-verified IDL→Python conversion
 """
 
 import numpy as np
@@ -250,9 +250,9 @@ obx = bx[i:i+2, j:j+2, k:k+2].copy()
 
 ---
 
-## 08-Parity 확장 — twin probe · dtype 충실 · 발산 수정 루프
+## Parity — twin probe · dtype 충실 · 발산 수정 루프
 
-이 하네스(08)에서 변환의 완료 기준은 리뷰 통과가 아니라 **오라클과의 parity PASS**다.
+이 하네스에서 변환의 완료 기준은 리뷰 통과가 아니라 **오라클과의 parity PASS**다.
 변환 전에 `parity-protocol` 스킬(특히 §3 orientation, §4 함정 카탈로그)을 반드시 읽는다.
 
 ### 1. Twin probe 삽입 (필수)

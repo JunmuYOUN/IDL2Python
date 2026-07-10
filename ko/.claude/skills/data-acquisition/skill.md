@@ -56,7 +56,7 @@ description: >
 
 ## 3. fetch_data.py 사용법 (루트 C)
 
-서버 torchV2 환경에서 실행:
+`idl2py` 환경에서 실행:
 
 ```bash
 # VSO (인증 불필요)

@@ -1,7 +1,7 @@
 # tools/selftest — 하네스 셀프테스트 (probe → 비교 왕복)
 
 하네스 배치/환경 변경 후 핵심 메커니즘(chk_dump 양쪽 + compare_probes)이
-살아있는지 5분 안에 확인하는 최소 테스트. 2026-07-09 서버에서 검증 완료.
+살아있는지 5분 안에 확인하는 최소 테스트.
 
 ```bash
 # 서버의 임의 작업 디렉토리에서 (예: <harness>/_selftest_run) — 삭제 명령 없이 재실행 가능
@@ -13,7 +13,7 @@ cp <harness>/tools/selftest/smoke_idl.txt <harness>/tools/selftest/smoke_py.py .
 CHK_DIR=$PWD/probes_idl /usr/local/bin/idl < smoke_idl.txt
 
 # 2) Python twin 생성 (정상 + 고의 불일치 2종)
-source ~/anaconda3/etc/profile.d/conda.sh && conda activate torchV2
+source ~/anaconda3/etc/profile.d/conda.sh && conda activate idl2py
 python smoke_py.py
 
 # 3) 비교 — 기대 결과:

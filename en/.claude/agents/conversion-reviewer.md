@@ -192,9 +192,9 @@ Add the following items to the review checklist:
 
 ---
 
-## 08-Parity Extension — parity is the premise of PASS
+## Parity — the premise of PASS
 
-In this harness (08), an additional **prerequisite** for a PASS verdict is added:
+In this harness, the **prerequisite** for a PASS verdict is:
 
 1. **parity gate**: the latest `reports/parity/run_NN/report.json` has `summary.all_pass == true`
    (0 divergences excluding waivers). If there is no parity report or divergences remain, it is REVISE without exception.
@@ -208,5 +208,5 @@ In this harness (08), an additional **prerequisite** for a PASS verdict is added
    the oracle cache key, and the policy in use (policy.yaml).
 6. **number of input sets**: if PASS was achieved with only one set, note additional-set verification as a recommendation.
 
-07's review checklist (indexing/omissions/quality) remains fully valid — even if parity passes,
+The baseline review checklist (indexing/omissions/quality) remains fully valid — even if parity passes,
 the handling of out-of-scope code (areas excluded from conversion) and code quality are assessed separately.
