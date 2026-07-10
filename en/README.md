@@ -42,7 +42,7 @@ Source collection → Analysis (+probe plan +policy draft) → [Approval G1]
 |---|---|
 | **IDL 8.x** | For oracle execution. Both full and 90-day trial licenses work. If the target code uses SolarSoft, SSW installation is required (pure IDL code does not need SSW) |
 | **Python 3.10+** | See the environment setup below |
-| **Agent CLI** | Driven by a coding-agent CLI that loads `.claude/` (agent · skill definitions) |
+| **Agent CLI** | Any coding-agent CLI — CLIs that load `.claude/` natively (e.g., Claude Code) work as-is; any other CLI (e.g., OpenAI Codex CLI, or anything that reads `AGENTS.md`) enters through `AGENTS.md`. Same pipeline either way |
 | csh | For the headless IDL launcher (Linux standard) |
 | ssh (optional) | When IDL is on a remote server |
 | GPU | **Not needed** — all CPU |
@@ -109,13 +109,17 @@ Verify that the probe generation → comparison round-trip works in your environ
 ## Usage
 
 This repository is an **agent-CLI harness**. The pipeline (analysis → oracle → conversion → parity loop → certification) is
-carried out by the agent team in `.claude/`, and the user intervenes at approval gates.
+carried out by the agent team defined in `.claude/`, and the user intervenes at approval gates.
+The pipeline definition is plain markdown, so it is not tied to any particular CLI.
 
-1. Open a session by running, at the repository root, a coding-agent CLI that loads `.claude/` (agents · skills):
+1. Open a coding-agent CLI session at the repository root:
    ```bash
    cd IDL2Python
    # Start the agent CLI session
    ```
+   - CLIs that auto-load `.claude/` (e.g., Claude Code): just start it.
+   - Any other CLI (e.g., OpenAI Codex CLI): `AGENTS.md` is the entry point — if your tool
+     does not read it automatically, make your first message "Read AGENTS.md and follow it."
 2. Enter a conversion request (template):
    ```
    Convert [target.pro] to Python and verify it against the IDL execution results.
@@ -165,6 +169,7 @@ The harness can pull `.pro` files directly from an HTML/FTP directory index (see
 ```
 IDL2Python/
 ├── README.md / INTRO.md / harness.json
+├── AGENTS.md                     # entry point for agent CLIs that don't auto-load .claude/
 ├── .claude/
 │   ├── CLAUDE.md                 # pipeline operations contract
 │   ├── agents/                   # idl-analyzer, python-translator, parity-runner,

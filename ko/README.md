@@ -41,7 +41,7 @@ chk_dump, '05_masks', mas, msk             chk_dump('05_masks', mas=mas, msk=msk
 |---|---|
 | **IDL 8.x** | 오라클 실행용. 정식/90일 트라이얼 라이선스 모두 가능. 대상 코드가 SolarSoft를 쓰면 SSW 설치 필요 (순수 IDL 코드는 SSW 불필요) |
 | **Python 3.10+** | 아래 환경 설정 참조 |
-| **에이전트 CLI** | `.claude/`(에이전트·스킬 정의)를 로드하는 코딩 에이전트 CLI로 구동 |
+| **에이전트 CLI** | 아무 코딩 에이전트 CLI — `.claude/`를 네이티브로 로드하는 CLI(예: Claude Code)는 그대로, 그 외 CLI(예: OpenAI Codex CLI 등 `AGENTS.md`를 읽는 도구)는 `AGENTS.md`가 진입점. 어느 쪽이든 파이프라인 동일 |
 | csh | 헤드리스 IDL 런처용 (Linux 표준) |
 | ssh (선택) | IDL이 원격 서버에 있을 때 |
 | GPU | **불필요** — 전부 CPU |
@@ -108,13 +108,17 @@ probe 생성 → 비교 왕복이 환경에서 동작하는지 확인한다. `to
 ## 사용법
 
 이 저장소는 **에이전트 CLI 하네스**다. 파이프라인(분석→오라클→변환→패리티 루프→인증)은
-`.claude/`의 에이전트 팀이 수행하며, 사용자는 승인 게이트에서 개입한다.
+`.claude/`에 정의된 에이전트 팀이 수행하며, 사용자는 승인 게이트에서 개입한다.
+파이프라인 정의는 순수 마크다운이라 특정 CLI에 묶이지 않는다.
 
-1. `.claude/`(에이전트·스킬)를 로드하는 코딩 에이전트 CLI를 저장소 루트에서 실행해 세션을 연다:
+1. 저장소 루트에서 코딩 에이전트 CLI 세션을 연다:
    ```bash
    cd IDL2Python
    # 에이전트 CLI 세션 시작
    ```
+   - `.claude/`를 자동 로드하는 CLI(예: Claude Code): 그대로 시작하면 된다.
+   - 그 외 CLI(예: OpenAI Codex CLI): `AGENTS.md`가 진입점이다 — 자동으로 읽지 않는 도구라면
+     첫 메시지로 "AGENTS.md를 읽고 따르라"고 지시한다.
 2. 변환 요청을 입력한다 (템플릿):
    ```
    [대상.pro]를 Python으로 변환하고 IDL 실행 결과와 대조 검증해줘.
@@ -164,6 +168,7 @@ probe 생성 → 비교 왕복이 환경에서 동작하는지 확인한다. `to
 ```
 IDL2Python/
 ├── README.md / INTRO.md / harness.json
+├── AGENTS.md                     # .claude/를 자동 로드하지 않는 에이전트 CLI용 진입점
 ├── .claude/
 │   ├── CLAUDE.md                 # 파이프라인 운영 계약
 │   ├── agents/                   # idl-analyzer, python-translator, parity-runner,
