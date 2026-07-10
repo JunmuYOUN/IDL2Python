@@ -1,0 +1,10 @@
+# Windows에서 편집하고 Linux(IDL 호스트)에서 실행하는 저장소 — 실행 파일류는 LF 고정
+* text=auto
+*.csh text eol=lf
+*.sh  text eol=lf
+*.pro text eol=lf
+*.py  text eol=lf
+*.md  text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.txt text eol=lf

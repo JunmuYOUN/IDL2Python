@@ -1,0 +1,7 @@
+.compile chk_dump.pro
+a = findgen(3,4)
+b = 3.14
+m = bytarr(5,5)
+m[1:3,2:4] = 1b
+chk_dump, '01_test', a, b, m
+exit

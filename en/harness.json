@@ -1,0 +1,4 @@
+{
+  "name": "IDL-to-Python Converter + Execution Verifier",
+  "description": "An automated verification-loop pipeline that converts IDL .pro to Python and runs both the original IDL and the converted Python in a real environment to numerically compare (parity) them checkpoint by checkpoint"
+}

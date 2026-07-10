@@ -1,0 +1,33 @@
+# Numeric/coordinate parity policy template
+# At project start, copy to {work_path}/policy.yaml, fill it in, and get G1 approval.
+# Schema/semantics: .claude/skills/parity-protocol/skill.md §2, §3
+
+# Array axis policy — must be unified to one per project (parity-protocol §3)
+#   logical: Python preserves IDL's logical index a[i,j] → the comparator sorts the readsav axes in reverse
+#   memory : Python uses numpy's natural axes (flipped shape) → compare the readsav result as-is
+orientation: logical
+
+nan_equal: true          # if both sides are NaN, treat as a match
+dtype_strict: false      # if true, dtype mismatch FAILs immediately (default: warn only)
+
+defaults:
+  float:  {metric: allclose, rtol: 1.0e-5, atol: 1.0e-6}    # float32 basis
+  double: {metric: allclose, rtol: 1.0e-10, atol: 1.0e-12}
+  int:    {metric: exact}
+  byte_mask: {metric: iou, min_iou: 0.999}                  # auto-detects 0/1 arrays
+
+# per-probe/variable overrides (fill in together with the probe plan)
+# final-output metrics/thresholds: the analyzer proposes based on code characteristics → the user confirms at G1
+# (human-in-the-loop). Do not declare PASS with arbitrary values before confirmation.
+checkpoints: {}
+#  "01_input":
+#    "*": {metric: allclose, rtol: 0, atol: 0}     # for inputs, exact match is normal
+#  "99_final":
+#    seg_map: {metric: labels, min_iou: 0.99}      # allow label permutation
+
+# Approved mismatches — must include (cause, relaxed criteria, user approval)
+waivers: []
+#  - checkpoint: "07_rot"
+#    var: img_rot
+#    reason: "IDL cubic=-0.5 (cubic convolution) vs scipy spline kernel difference — user approval YYYY-MM-DD"
+#    relaxed: {metric: allclose, rtol: 1.0e-3, atol: 1.0e-4}

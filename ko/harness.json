@@ -1,0 +1,4 @@
+{
+  "name": "IDL-to-Python 변환+실행검증기",
+  "description": "IDL .pro를 Python으로 변환하고, 원본 IDL과 변환 Python을 실제 환경에서 실행하여 체크포인트 단위로 수치 대조(parity)하는 자동 검증 루프 파이프라인"
+}
