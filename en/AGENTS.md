@@ -1,16 +1,16 @@
-# AGENTS.md — Common Entry Point for Agent CLIs
+# AGENTS.md — Entry Point for Agent CLIs
 
 This repository is an agent harness that verifies IDL (`.pro`) → Python conversion by
 **execution-based numerical comparison (parity)**. The pipeline definition (operations
-contract · roles · protocols) lives entirely under `.claude/` as **plain markdown
-documents** — it is not a format tied to any particular LLM or CLI.
+contract · roles · protocols) lives under the `.claude/` directory as **plain markdown
+documents** — provider-neutral, not tied to any particular LLM or CLI.
 
-This file is the entry point for agent CLIs that do not auto-load `.claude/`:
+This file tells any coding-agent CLI how to run the harness:
 
-- **CLIs that load `.claude/` natively** (e.g., Claude Code): everything works the same
-  without this file. The instructions below simply spell out what such CLIs do automatically.
-- **CLIs that read `AGENTS.md`** (e.g., OpenAI Codex CLI) or any other coding agent:
-  follow the instructions below.
+- Some CLIs (e.g., Claude Code) load the `.claude/` directory automatically and follow
+  the steps below on their own.
+- Any other CLI (e.g., OpenAI Codex CLI, or anything that reads `AGENTS.md`) follows the
+  steps below explicitly.
 
 Whichever CLI drives it, the pipeline, rules, and deliverables are identical.
 
